@@ -4,8 +4,8 @@ import { StaticDataSource } from '../../../../SportsStore/src/app/model/static.d
 
 @Injectable()
 export class ProductRepository {
-  private products: Product[];
-  private categories: string[];
+  private products: Product[] = [];
+  private categories: string[] = [];
 
   constructor(private dataSource: StaticDataSource) {
     dataSource.getProducts().subscribe((data) => {
@@ -22,7 +22,7 @@ export class ProductRepository {
     );
   }
 
-  public getProduct(id: number): Product {
+  public getProduct(id: number): Product | undefined {
     return this.products.find((p) => p.id == id);
   }
 
